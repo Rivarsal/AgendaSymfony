@@ -16,8 +16,14 @@ class ContactoType extends AbstractType
             ->add('Apellido')
             ->add('Telefono')
             ->add('Correo')
-            ->add('Tipo')
+            ->add('nombreCampo', ChoiceType::class, [
+                'choices' => [
+                    'Opción 1' => 'Personal',
+                    'Opción 2' => 'Profesional',
+                ],
+            ])
             ->add('Notas')
+            ->add('create', SubmitType::class)
         ;
     }
 
