@@ -20,9 +20,7 @@ class ContactoController extends AbstractController
      */
     public function index(ContactoRepository $contactoRepository): Response
     {
-        return $this->render('contacto/index.html.twig', [
-            'contactos' => $contactoRepository->findAll(),
-        ]);
+        return $this->render('contacto/index.html.twig');
     }
 
     /**
@@ -79,16 +77,37 @@ class ContactoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contacto_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="contacto_delete", methods={"GET","DELETE"})
      */
     public function delete(Request $request, Contacto $contacto): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contacto->getId(), $request->request->get('_token'))) {
+        
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($contacto);
             $entityManager->flush();
-        }
+        
 
         return $this->redirectToRoute('contacto_index');
     }
+
+
+    /**
+     * @Route("/list/{type}", name="list")
+     */
+    public function list(Request $request, $type):Response{
+        if($type == 'global'){
+            $contacto = $this->getDoctrine()
+            ->getRepository(Contacto::class)
+            ->findAll();
+
+        }else{
+            $contacto = $this->getDoctrine()
+            ->getRepository(Contacto::class)
+            ->findBy(['Tipo' => $type]);
+        }
+            return $this->render('contacto/list.html.twig',[
+            'list'=>$contacto,
+            'type'=>$type,
+        ]);
+}
 }

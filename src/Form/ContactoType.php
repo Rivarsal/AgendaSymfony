@@ -6,6 +6,9 @@ use App\Entity\Contacto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ContactoType extends AbstractType
 {
@@ -15,15 +18,18 @@ class ContactoType extends AbstractType
             ->add('Nombre')
             ->add('Apellido')
             ->add('Telefono')
-            ->add('Correo')
-            ->add('nombreCampo', ChoiceType::class, [
+            ->add('Correo', EmailType::class, [
+                'help' => 'Tiene que contener un @ y un .'
+
+            ])
+            ->add('tipo', ChoiceType::class, [
                 'choices' => [
-                    'Opción 1' => 'Personal',
-                    'Opción 2' => 'Profesional',
+                    'Personal' => 'personal',
+                    'Profesional' => 'profesional',
                 ],
             ])
             ->add('Notas')
-            ->add('create', SubmitType::class)
+            ->add('Crear', SubmitType::class)
         ;
     }
 

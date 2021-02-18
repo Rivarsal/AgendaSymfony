@@ -1,45 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contacto index{% endblock %}
 
-{% block body %}
-    <h1>Contacto index</h1>
+{% block contain %} 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th>Tipo</th>
-                <th>Notas</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contacto in contactos %}
-            <tr>
-                <td>{{ contacto.id }}</td>
-                <td>{{ contacto.Nombre }}</td>
-                <td>{{ contacto.Apellido }}</td>
-                <td>{{ contacto.Telefono }}</td>
-                <td>{{ contacto.Correo }}</td>
-                <td>{{ contacto.Tipo }}</td>
-                <td>{{ contacto.Notas }}</td>
-                <td>
-                    <a href="{{ path('contacto_show', {'id': contacto.id}) }}">show</a>
-                    <a href="{{ path('contacto_edit', {'id': contacto.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="container-fluid agendas "> 
 
-    <a href="{{ path('contacto_new') }}">Create new</a>
+
+
+<div class = "row justify-content-around text-center"> 
+<a class ="enlace" href={{path ('list',{'type':'personal'})}}> <img src ="/imagenes/personal.png" alt = "Agenda Personal "> <br> <p> Agenda Personal </p></a>
+
+
+
+
+
+<a class ="enlace" href={{path ('list',{'type':'profesional'})}}> <img src ="/imagenes/profesional.png" alt = "Agenda Profesional "> <br> <p>  Agenda Profesional </p> </a>
+
+
+
+
+<a class ="enlace" href={{path ('list',{'type':'global'})}}> <img class = "globo" src ="/imagenes/global.png" alt = "Agenda Global " height="300" width="300"> <br> <p> Agenda Global </p></a>
+
+
+</div>
+
+
+</div>
+
+
 {% endblock %}

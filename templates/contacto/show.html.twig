@@ -2,10 +2,11 @@
 
 {% block title %}Contacto{% endblock %}
 
-{% block body %}
-    <h1>Contacto</h1>
+{% block contain %}
+    <h1 class = "text-center lista">Contacto Nº {{ contacto.id }}</h1>
 
-    <table class="table">
+  <div class="container text-center">
+    <table class="table tabla">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -37,10 +38,11 @@
             </tr>
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('contacto_index') }}">back to list</a>
+    <div class="container text-center">
+    <a href="{{ path('contacto_edit', {'id': contacto.id}) }}"><button type="button" class="btn btn-primary">Editar </button></a>
+</div>
 
-    <a href="{{ path('contacto_edit', {'id': contacto.id}) }}">edit</a>
-
-    {{ include('contacto/_delete_form.html.twig') }}
+    
 {% endblock %}

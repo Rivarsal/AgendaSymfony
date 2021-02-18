@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block contain %} 
+
+
+    <h1 class = "text-center lista">Lista de Contactos</h1>
+
+
+    <table class="table tabla">
+        <thead>
+            <tr>
+                <th>Icono </th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Tipo</th>
+                <th>Notas</th>
+                <th>Botones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contacto in list %}
+            <tr>  <td> <img 
+                {% if contacto.Tipo == 'personal' %}
+
+                width = "30" height = "30" src ="/imagenes/iconoPers.jpg" style ="margin-left: 10px;"
+
+                {% else %}
+
+                width = "50" height = "30"   src ="/imagenes/iconoProf.png"
+
+                {% endif %}
+                        > </td>
+               
+                <td>{{ contacto.id }}</td>
+                <td>{{ contacto.Nombre }}</td>
+                <td>{{ contacto.Apellido }}</td>
+                <td>{{ contacto.Telefono }}</td>
+                <td>{{ contacto.Correo }}</td>
+                <td>{{ contacto.Tipo }}</td>
+                <td>{{ contacto.Notas }}</td>
+                <td>
+                    <a href="{{ path('contacto_show', {'id': contacto.id}) }}"><button type="button" class="btn btn-primary">Ver</button></a>
+                    <a href="{{ path('contacto_delete', {'id': contacto.id}) }}"><button type="button" class="btn btn-danger">Borrar</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No hay ningún contacto guardado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        
+    </table>
+
+
+{% endblock %}
+

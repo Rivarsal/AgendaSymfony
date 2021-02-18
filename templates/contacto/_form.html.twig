@@ -1,4 +1,20 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends 'base.html.twig' %} 
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block contain %}
+<div class="w-100 d-flex formulario">
+
+<div class="container">
+{{form(form)}}
+</div>
+</div>
+
+
+
+
+{% endblock %}

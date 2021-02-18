@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ContactoRepository::class)
@@ -19,21 +20,27 @@ class Contacto
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $Nombre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $Apellido;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Regex("/^\+?\d+/")
      */
     private $Telefono;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+    
      */
     private $Correo;
 
@@ -44,6 +51,7 @@ class Contacto
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $Notas;
 
