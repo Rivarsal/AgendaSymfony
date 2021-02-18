@@ -9,9 +9,14 @@ A su vez también tendremos una tabla *Global* que tendrá todos los contactos d
 
 ## Guía de utilización:
 
+
+Para poder utilizar la página deberemos entrar en la siguiente url: 
+
+``` 
+http://localhost:8000/contacto
+``` 
+
 La página cuenta con un Navbar que contará con dos botones que harán lo siguiente:
-
-
 
 | Boton | Description |
 | ------ | ----------- |
