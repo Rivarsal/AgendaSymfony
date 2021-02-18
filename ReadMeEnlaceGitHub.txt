@@ -1,3 +1,3 @@
-El enlace para leer el ReadMe en el Github será el siguiente:
+El enlace para el MarkDown es:
 
 https://github.com/Rivarsal/AgendaSymfony
